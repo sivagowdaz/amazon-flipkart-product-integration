@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/saved.css" %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="saved_products">
+        <p class="display_products">Flipkart Produts</p>
+        {% for product in flipkart_products %}
+        <div class="flipkart_saved_product">
+            <img src="{{ product.image}}" alt="" class="product_image">
+            <div>
+                <p class="product_heading">{{product.title}}</p>
+                <p class="product_ratting">ratting: <span>{{product.ratting}}</span></p>
+                <p class="product_user_review_text">review: <span>{{product.review_data}}</span></p>
+                <p class="product_proce">price: <span>{{product.price}}</span></p>
+                <p class="original_price">Original Price: <span>{{product.original_price}}</span></p>
+                <p class='descount_percentage'>discount: <span>{{product.discount}}</span></p>
+                <p class="product_desc">{{product.product_description}}</p>
+                <a href="{{product.product_url}}" class="product_link">check it in flipkart</a>
+                <form action="{% url 'saved' %}" method='post' class="indexform">
+                    {% csrf_token %}
+                    <button class="remove_product" name='f_id' value={{product.id}}>remove</button>
+                </form>
+            </div>    
+            </div>
+            {% endfor %}
+
+        <p class="display_products">Amazon Produts</p>
+        {% for product in amazon_products %}
+        <div class="amazon_saved_product">
+            <img src="{{ product.image}}" alt="" class="product_image">
+            <div>
+                <p class="product_description">
+                    {{product.product_description}}
+                </p>
+                <p class="total_review">total review: <span>{{product.review_num}}</span></p>
+                <p class="product_price">price: $<span>{{product.price}}</span></p>
+                <a href="{{product.product_link}}" class="product_link">check it in amazon</a>
+                <form action="{% url 'saved' %}" method='post' class="indexform">
+                    {% csrf_token %}
+                    <button class="remove_product" name='a_id' value={{product.id}}>remove</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+{% endblock content %}

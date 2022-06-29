@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
+    <title>Make it Easy</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="wesite_name">
+            Get it Easy
+        </div>
+        <div class="navigation">
+            <a href="{% url 'query_page' %}" class="navlinks">Home</a>
+            <a href="{% url 'saved' %}" class="navlinks">Saved</a>
+            {% if user.is_authenticated %}
+                <a href="#" class="navlinks" onClick="document.getElementById('logoutform').submit()">
+                        Logout
+                </a>        
+            {% endif %}        
+        </div>
+    </nav>
+
+    <form id="logoutform" method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <input type="hidden">
+    </form>
+
+    <section class="detail_section">
+        <div class="flipkart_detail">
+            <img class='f_intro_image' src="https://www.freepnglogos.com/uploads/flipkart-logo-png/flipkart-finger-print-biometrics-aadhaar-ekyc-access-control-17.png" alt=""> <br>
+            <p class="e_description">
+                Flipkart marketplace is India’s leading platform for selling online. Be it a manufacturer, vendor or supplier, simply
+                sell your products online on Flipkart and become a top ecommerce player with minimum investment.
+            </p>
+        </div>
+        <div class="amazon_detail">
+            <img class='a_intro_image' src="http://sguru.org/wp-content/uploads/2018/02/amazon-logo.png" alt=""> <br>
+           
+            <p class="e_description">
+                The Amazon Marketplace Referral Fees are subtracted from the overall sale of your product as part of Amazon’s
+                cost-per-acquisition (CPA) model. These include variable closing fees such as selling price, shipping and gift wrap.
+            </p>
+        </div>
+    </section>
+    {% block content %}
+    {% endblock content %}
+    <script src="{% static "java/base.js"%}"></script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;0,900;1,100;1,900&display=swap');
+
+html, body, * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+.request_para {
+    text-align: center;
+    color: gray;
+    opacity: 0.9;
+}
+.search_box {
+    margin-top: 20px;
+    text-align: center;
+}
+.search_box > input {
+    width: 700px;
+    height: 50px;
+    outline: none;
+    margin-right: 0;
+    padding-left: 50px;
+    border: 1px solid  rgb(62, 62, 196);
+    border-radius: 30px 0px 0px 30px;
+    font-size: 18px;
+}
+.search_button {
+    width: 100px;
+    outline: none;
+    height: 50px;
+    margin-left: -5px;
+    font-size: 18px;
+    background-color:rgb(62, 62, 196);
+    color: white;
+    border: 1px solid rgb(62, 62, 196);
+    border-radius: 0px 30px 30px 0px;
+}
+.download_pdf {
+    text-align: center;
+    margin-top: 18px;
+}
+.download_pdf > label {
+    margin-top: 15px;
+    font-size: 18px;
+}
+.download_submitter {
+    outline: none;
+    /* width: 600px; */
+    overflow: auto;
+    /* height: 200px; */
+    border: 1px solid gray;
+    border-radius: 10px;
+    font-size: 15px;
+}
+.download_submit_button {
+    margin-top: 10px;
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: green;
+}
+.download_holder {
+    display: flex;
+    justify-content: center;
+}
+.pdf_download_button {
+    border: none;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px;
+    color: white;
+    background-color: green;
+    border-radius: 5px;
+}
+.product_container {
+    display: flex;
+    padding: 30px;
+}
+.flipkart_products {
+    width: 100%;
+    height: calc(100vh - 75px);
+    overflow-y: scroll;
+    padding: 10px;
+}
+.flipkart_product {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 17px;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: -1px 4px 13px -2px rgba(0,0,0,0.55);
+    -webkit-box-shadow: -1px 4px 13px -2px rgba(0,0,0,0.55);
+    -moz-box-shadow: -1px 4px 13px -2px rgba(0,0,0,0.55);
+}
+.product_image {
+    height: fit-content;
+    max-width: 300px;
+}
+.amazon_products {
+    width: 100%;
+    overflow-y: scroll;
+    height: calc(100vh - 75px);
+    padding: 10px;
+}
+.amazon_product {
+    display: flex;
+    margin-top: 15px;
+    border-radius: 10px;
+    gap: 10px;
+    padding: 15px;
+    box-shadow: -1px 4px 13px -2px rgba(0,0,0,0.55);
+    -webkit-box-shadow: -1px 4px 13px -2px rgba(0,0,0,0.55);
+    -moz-box-shadow: -1px 4px 13px -2px rgba(0,0,0,0.55);
+}
+
+.product_heading {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.product_ratting {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+.product_ratting > span {
+    color: blue;
+}
+.product_user_review_text {
+    color: gray;
+    margin-bottom: 8px;
+}
+.product_proce > span{
+    color: green;
+    margin-bottom: 8px;
+}
+.original_price > span {
+    color: green;
+    margin-bottom: 8px;
+}
+.descount_percentage {
+    margin-bottom: 8px;
+}
+.descount_percentage > span {
+    color: red;
+}
+li {
+    list-style: none;
+    margin-bottom: 5px;
+}
+
+.product_link {
+    color: blue;
+    text-decoration: underline;
+    font-style: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.save_for_later {
+    margin-top: 10px;
+    outline: none;
+    border: none;
+    padding: 8px;
+    border-radius: 7px;
+    background-color:rgb(62, 62, 196);
+    color: white;
+    margin-bottom: 12px;
+}
+.custom-control-label {
+    color: gray;
+    font-size: 13px;
+}
+
+.product_description {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+.ratting {
+    margin-bottom: 8px;
+}    
+.ratting > span {
+    color: blue;
+}
+.total_review {
+    margin-bottom: 8px;
+}
+.total_review > span {
+    color: red
+}
+.product_price {
+    margin-bottom: 8px;
+}
+.product_price > span {
+    color: green;
+}
+
+.ecom_login_container {
+    justify-content: center;
+    display: flex;
+    margin: 0 auto;
+}
+.flipkart_login, .amazon_login {
+    padding: 15px
+}
+.flipkart_login {
+    border-right: 1px solid gray;
+}
+.ecom_login_container {
+    margin-top: 15px;
+}
+.modal {
+    padding: 10px;  
+}
+
+.input_chamber {
+    height: 30px;
+    width: 200px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray; 
+
+}
+#aemailid{
+height: 30px;
+    width: 200px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray; 
+}
+
+.submit_button_login {
+    padding: 5px 5px;
+    color: white;
+    background-color:rgb(62, 62, 196);
+    border:none;
+    outline: none;
+    border-radius: 7px;
+}
+#login_amazon, #login_flipkart {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    color:rgb(62, 62, 196);
+}
+
+.sortproducts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    margin-left: 40px;
+    position: fixed;
+}
+.sorting_input {
+    outline: none;
+    border: none;
+    background-color: rgb(104, 104, 216);
+    width: 250px;
+    border-radius: 10px;
+    height: 25px;
+    color: white;
+    font-size: 15px;
+    padding-left: 15px;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+.sorting_button {
+    padding: 2px;
+    margin-right: 5px;
+    font-size: 12px;
+    color: white;
+    background-color:rgb(62, 62, 196);
+    border-radius: 3px;
+    border: none;
+    outline: none;
+}

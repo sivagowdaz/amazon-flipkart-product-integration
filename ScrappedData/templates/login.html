@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/login.css" %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="mainlogincontainer">
+        <div class="left_login">
+            <img src="https://cdn.wccftech.com/wp-content/uploads/2015/03/amazon.png" alt="" class="amazon_image">
+            <img src="https://www.dlf.pt/png/big/11/110835_versus-logo-png.png" alt="" class="vs_image">
+            <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/flipkart-logo.png" alt="" class="flipkart_image">
+        </div>
+        <div class="right_login">
+            <div class="login_chamber">
+                <div>
+                    <h1>User Login</h1>
+                    <form action="{% url 'login' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="username" placeholder="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150"
+                            required="" id="id_username"> <br>
+                        <input type="password" name="password" placeholder="password" autocomplete="current-password" required="" id="id_password"> <br>
+                        <input class="button" type="submit" value="Login">
+                    </form>
+                    <p class='register_choice'>
+                        Don't have an account?
+                        <a href="{% url 'register' %}">
+                            Register
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

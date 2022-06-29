@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/querypage.css" %}">
+    <title>Document</title>
+</head>
+<body>
+    <p class="request_para">
+        please search the content by specifiying ints specification for the better result...
+    </p>
+    <form action="{% url 'query_page' %}" method="post" class="search_box">
+        {% csrf_token %}
+        <input type="text" placeholder='Search' name='search_string' value={{search_string}} placeholder={{Search}}>
+        <button class='search_button' type='submit'>Search</button>
+    </form>
+    <div id='download_id' class="download_pdf disappear">
+        <form action="{% url 'query_page' %}" method="post">
+            {% csrf_token %}
+            <label for="downloader">selected items are</label> <br>
+            <textarea cols="70", rows="10" id='input_box' type="text" name='downloader', class='download_submitter'></textarea> <br>
+            <input type="submit" class='download_submit_button' value='dump to pdf'>
+        </form>
+    </div>
+    {% if file_generated%}
+    <a href="{{ file_generated.pdf_file.url }}" download>
+        <div class="download_holder">
+            <button class='pdf_download_button' type='button'>Download File</button>
+        </div>
+    </a>
+    {% endif %}
+
+    <div class="ecom_login_container">
+        {% if flipkart_products %}
+        <div class="flipkart_login">
+            <p id="login_flipkart">login to flipkart</p>
+            <div class="fmodal modal" id='fmodalid' style="display: none;">
+                <form action="{% url 'query_page' %}" class="modalform" method="post">
+                    {% csrf_token %}
+                    <input type="text" placeholder='email' name="femail" class="femail input_chamber" id='femailid'><br>
+                    <input type="text" placeholder='password' name="fpassword" class="fpassword input_chamber" id='fpasswordid'><br>
+                    <input type="text" placeholder="enter the product id" name='fproductid' class="fproductid input_chamber"><br>
+                    <input type="submit" class="submit_button_login">
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        {% if amazon_products %}
+        <div class="amazon_login">
+            <p id="login_amazon">login to amazon</p>
+            <div class="amodal modal" id='amodalid' style="display: none;">
+                <form action="{% url 'query_page' %}" class="modalform" method='post'>
+                    {% csrf_token %}
+                    <input type="text" placeholder="email" class="aemail " name='aemail' id='aemailid'><br>
+                    <input type="text" placeholder="password" class="apassword input_chamber" name='apassword' id='apasswordid'><br>
+                    <input type="text" placeholder="enter the product id" name='aproductid' class="aproductid input_chamber"><br>
+                    <input type="submit"  class="submit_button_login">
+                </form>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="product_container">
+        {% if flipkart_products %}
+        <div class="flipkart_products">
+            <div class="sortproducts">
+                <div>
+                    <form action="{% url 'query_page' %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" placeholder='sort by title' name='fsort' class='sorting_input'>
+                        <button type="submit" class='sorting_button'>Sort</button>
+                    </form>
+                </div>
+                <form action="{% url 'query_page' %}" method='post'>
+                    {% csrf_token %}
+                    <input type='hidden' value='' name='fsort'>
+                    <button type='submit' class='sorting_button'>All</button>
+                </form>
+            
+            </div>
+                {% for product in flipkart_products %}
+                <div class="flipkart_product">
+                    <div>
+                        <img src="{{ product.product_image}}" alt="" class="product_image">
+                        <p>product id: {{product.product_index}}</p>
+                    </div>
+                   
+                    <div>
+                        <p class="product_heading" id={{product.product_index}}>{{product.product_heading}}</p>
+                        <p class="product_ratting">ratting: <span>{{product.product_ratting}}</span></p>
+                        <p class="product_user_review_text">{{product.user_review_text}}</p>
+                        <p class="product_proce">Price: <span>{{product.price_of_product}}</span></p>
+                        <p class="original_price">Original Price: <span>{{product.original_price}}</span></p>
+                        <p class='descount_percentage'>discount: <span>{{product.discount_percentage}}</span></p>
+                        {% for desc in product.product_description %}
+                        <li class="product_desc">{{desc}}</li>
+                        {% endfor %}
+                        <a href="{{product.product_url}}" class="product_link">check it in flipkart</a>
+                        <form action="{% url 'query_page' %}" method='post' class="indexform">
+                            {% csrf_token %}
+                            <button class="save_for_later" name='index_value_f' value={{product.product_index}}>see later</button>
+                        </form>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" value={{product.product_index}} class="custom-control-input checkboxes" id="defaultChecked2"
+                                name='name' input>
+                            <label class="custom-control-label" for="defaultChecked2">check for dump data</label>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if amazon_products %}
+        <div class="amazon_products">   
+            <div class="sortproducts">
+                <div>
+                    <form action="{% url 'query_page' %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" placeholder='sort by title' name='asort' class='sorting_input'>
+                        <button type="submit" class='sorting_button'>Sort</button>
+                    </form>
+                </div>
+                <form action="{% url 'query_page' %}" method='post'>
+                    {% csrf_token %}
+                    <input type='hidden' value='' name='asort'>
+                    <button type='submit' class='sorting_button'>All</button>
+                </form>
+            </div>
+                {% for product in amazon_products %}
+                <div class="amazon_product">
+                    <div>
+                        <img src="{{ product.product_image}}" alt="" class="product_image">
+                        <p>{{product.product_index}}</p>
+                    </div>
+                    
+                    <div>
+                        <p class="product_description" id={{product.product_index}}>
+                            {{product.product_description}}
+                        </p>
+                        <p class="ratting">ratting: <span>{{product.ratting}}</span></p>
+                        <p class="total_review">total review: <span>{{product.total_review}}</span></p>
+                        <p class="product_price">price: $<span>{{product.product_price}}</span></p>
+                        <a href="{{product.product_link}}" class="product_link">check it in amazon</a>
+                        <form action="{% url 'query_page' %}" method='post' class="indexform">
+                            {% csrf_token %}
+                            <button class="save_for_later" name='index_value_a' value={{product.product_index}}>see later</button>
+                        </form>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" value={{product.product_index}} class="custom-control-input" id="defaultChecked2" name='name'
+                                input>
+                            <label class="custom-control-label" for="defaultChecked2">check for dump data</label>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+{% endblock content %}

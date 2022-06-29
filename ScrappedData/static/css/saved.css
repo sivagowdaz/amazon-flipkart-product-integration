@@ -1,0 +1,105 @@
+.saved_products {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.display_products {
+    font-size: 21px;
+    color: rgb(62, 62, 196);
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+.flipkart_saved_product, .amazon_saved_product {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: -1px 4px 13px -2px rgba(0,0,0,0.55);
+    -webkit-box-shadow: -1px 4px 13px -2px rgba(0,0,0,0.55);
+    -moz-box-shadow: -1px 4px 13px -2px rgba(0,0,0,0.55);
+}
+
+.product_image {
+    height: fit-content;
+}
+
+
+.product_heading {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.product_ratting {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+.product_ratting > span {
+    color: blue;
+}
+.product_user_review_text {
+    color: gray;
+    margin-bottom: 8px;
+}
+.product_proce > span{
+    color: green;
+    margin-bottom: 8px;
+}
+.original_price > span {
+    color: green;
+    margin-bottom: 8px;
+}
+.descount_percentage {
+    margin-bottom: 8px;
+}
+.descount_percentage > span {
+    color: red;
+}
+.product_desc {
+    margin-bottom: 8px;
+}
+
+.product_link {
+    color: blue;
+    text-decoration: underline;
+    font-style: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.remove_product {
+    margin-top: 10px;
+    outline: none;
+    border: none;
+    padding: 8px;
+    border-radius: 7px;
+    background-color: red;
+    color: white;
+    margin-bottom: 12px;
+}
+.custom-control-label {
+    color: gray;
+    font-size: 13px;
+}
+
+.product_description {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+.ratting {
+    margin-bottom: 8px;
+}    
+.ratting > span {
+    color: blue;
+}
+.total_review {
+    margin-bottom: 8px;
+}
+.total_review > span {
+    color: red
+}
+.product_price {
+    margin-bottom: 8px;
+}
+.product_price > span {
+    color: green;
+}
