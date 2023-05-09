@@ -42,9 +42,9 @@
             <div class="fmodal modal" id='fmodalid' style="display: none;">
                 <form action="{% url 'query_page' %}" class="modalform" method="post">
                     {% csrf_token %}
-                    <input type="text" placeholder='email' name="femail" class="femail input_chamber" id='femailid'><br>
-                    <input type="text" placeholder='password' name="fpassword" class="fpassword input_chamber" id='fpasswordid'><br>
-                    <input type="text" placeholder="enter the product id" name='fproductid' class="fproductid input_chamber"><br>
+                    <input type="text" value='email' name="femail" class="femail input_chamber" id='femailid'><br>
+                    <input type="text" value='password' name="fpassword" class="fpassword input_chamber" id='fpasswordid'><br>
+                    <input type="text" value="product id" name='fproductid' class="fproductid input_chamber"><br>
                     <input type="submit" class="submit_button_login">
                 </form>
             </div>
@@ -56,9 +56,9 @@
             <div class="amodal modal" id='amodalid' style="display: none;">
                 <form action="{% url 'query_page' %}" class="modalform" method='post'>
                     {% csrf_token %}
-                    <input type="text" placeholder="email" class="aemail " name='aemail' id='aemailid'><br>
-                    <input type="text" placeholder="password" class="apassword input_chamber" name='apassword' id='apasswordid'><br>
-                    <input type="text" placeholder="enter the product id" name='aproductid' class="aproductid input_chamber"><br>
+                    <input type="text" value="email" class="aemail " name='aemail' id='aemailid'><br>
+                    <input type="text" value="password" class="apassword input_chamber" name='apassword' id='apasswordid'><br>
+                    <input type="text" value="product id" name='aproductid' class="aproductid input_chamber"><br>
                     <input type="submit"  class="submit_button_login">
                 </form>
             </div>

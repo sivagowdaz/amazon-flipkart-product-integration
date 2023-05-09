@@ -31,7 +31,8 @@ class FlipcartBoat(webdriver.Chrome):
         self.get(const.FLIPCART_URL)
 
     def remove_popup(self):
-        button = self.find_element_by_css_selector("button[class = '_2KpZ6l _2doB4z']")
+        button = self.find_element_by_css_selector(
+            "button[class = '_2KpZ6l _2doB4z']")
         button.click()
 
     def flipkart_login(self, email, password):
@@ -82,11 +83,13 @@ class FlipcartBoat(webdriver.Chrome):
 
             product_heading = None
             if product.find("div", {"class": "_4rR01T"}):
-                product_heading = product.find("div", {"class": "_4rR01T"}).text
+                product_heading = product.find(
+                    "div", {"class": "_4rR01T"}).text
 
             product_ratting = None
             if product.find("div", {"class": "_3LWZlK"}):
-                product_ratting = product.find("div", {"class": "_3LWZlK"}).text
+                product_ratting = product.find(
+                    "div", {"class": "_3LWZlK"}).text
 
             text = None
             if product.find("span", {"class": "_2_R_DZ"}):
@@ -117,13 +120,15 @@ class FlipcartBoat(webdriver.Chrome):
                 ).text
 
             if product.find("div", {"class": "_3I9_wc _27UcVY"}):
-                original_price = product.find("div", {"class": "_3I9_wc _27UcVY"}).text
+                original_price = product.find(
+                    "div", {"class": "_3I9_wc _27UcVY"}).text
             else:
                 original_price = None
 
             discount_percentage = None
             if product.find("div", {"class": "_3Ay6Sb"}):
-                discount_percentage = product.find("div", {"class": "_3Ay6Sb"}).text
+                discount_percentage = product.find(
+                    "div", {"class": "_3Ay6Sb"}).text
 
             product_url = "#"
             if product.find("a", {"class": "_1fQZEK"}):
@@ -131,15 +136,18 @@ class FlipcartBoat(webdriver.Chrome):
 
             if product_url == "#":
                 if product.find("a", {"class": "s1Q9rs"}):
-                    product_url = product.find("a", {"class": "s1Q9rs"}).get("href")
+                    product_url = product.find(
+                        "a", {"class": "s1Q9rs"}).get("href")
                     product_url = f"https://www.flipkart.com{product_url}"
                     if product_heading == None:
-                        product_heading = product.find("a", {"class": "s1Q9rs"}).text
+                        product_heading = product.find(
+                            "a", {"class": "s1Q9rs"}).text
 
             product_image = "#"
             if product.find("div", {"class": "CXW8mj"}):
                 product_image = (
-                    product.find("div", {"class": "CXW8mj"}).find("img").get("src")
+                    product.find("div", {"class": "CXW8mj"}).find(
+                        "img").get("src")
                 )
 
             product_list.append(
@@ -195,7 +203,8 @@ class AmazonBot(webdriver.Chrome):
         )
         currency_dropdown.click()
 
-        clicking_curr = self.find_element_by_css_selector('a[id="icp-sc-dropdown_2"]')
+        clicking_curr = self.find_element_by_css_selector(
+            'a[id="icp-sc-dropdown_2"]')
         clicking_curr.click()
         save_button = self.find_element_by_css_selector(
             'input[aria-labelledby="icp-btn-save-announce"]'
@@ -203,7 +212,8 @@ class AmazonBot(webdriver.Chrome):
         save_button.click()
 
     def amazon_login(self, email, password):
-        self.find_element_by_css_selector("#nav-link-accountList-nav-line-1").click()
+        self.find_element_by_css_selector(
+            "#nav-link-accountList-nav-line-1").click()
         email_input = self.find_element_by_id("ap_email")
         email_input.clear()
         email_input.send_keys(email)
@@ -248,19 +258,20 @@ class AmazonBot(webdriver.Chrome):
         product_list_data = soup.find_all(
             "div",
             {
-                "class": "s-card-container s-overflow-hidden s-include-content-margin s-latency-cf-section s-card-border"
+                "class": "s-card-container s-overflow-hidden aok-relative puis-wide-grid-style puis-wide-grid-style-t2 puis-include-content-margin puis s-latency-cf-section s-card-border"
             },
         )
+        # s-card-container s-overflow-hidden aok-relative puis-wide-grid-style puis-wide-grid-style-t2 puis-include-content-margin puis s-latency-cf-section s-card-border
         # s-card-container s-overflow-hidden s-include-content-margin s-latency-cf-section s-card-border
         # s-include-content-margin s-latency-cf-section s-border-bottom s-border-top
         if len(product_list_data) == 0:
             print(len(product_list_data))
-            if self.recursion_count == 3:
+            if self.recursion_count == 8:
                 return product_list
             self.recursion_count += 1
             return self.find_all_products(search_string)
         else:
-            print(len(product_list_data))
+            print("The legth of the amazon products is", len(product_list_data))
             product_index = 100
             for product in product_list_data:
 
@@ -291,20 +302,24 @@ class AmazonBot(webdriver.Chrome):
                     "span", {"class": "a-size-medium a-color-base a-text-normal"}
                 ):
                     product_description = product.find(
-                        "span", {"class": "a-size-medium a-color-base a-text-normal"}
+                        "span", {
+                            "class": "a-size-medium a-color-base a-text-normal"}
                     ).text
                     product_description = product_description.strip()
 
                 total_review = None
                 if product.find("span", {"class": "a-size-base"}):
-                    total_review = product.find("span", {"class": "a-size-base"}).text
+                    total_review = product.find(
+                        "span", {"class": "a-size-base"}).text
 
                 product_price = None
                 if product.find("span", {"class": "a-price-whole"}):
-                    whole = product.find("span", {"class": "a-price-whole"}).text
+                    whole = product.find(
+                        "span", {"class": "a-price-whole"}).text
                     product_price = whole
                 if product.find("span", {"class": "a-price-fraction"}):
-                    fraction = product.find("span", {"class": "a-price-fraction"}).text
+                    fraction = product.find(
+                        "span", {"class": "a-price-fraction"}).text
                     product_price = f"{product_price}{fraction}"
 
                 ratting = None
@@ -370,13 +385,16 @@ class AmazonBot(webdriver.Chrome):
             for product in product_box:
                 product_image = None
                 if product.find("img", {"class": "s-image"}):
-                    product_image = product.find("img", {"class": "s-image"}).get("src")
+                    product_image = product.find(
+                        "img", {"class": "s-image"}).get("src")
                 product_desc = None
                 if product.find(
-                    "span", {"class", "a-size-base-plus a-color-base a-text-normal"}
+                    "span", {
+                        "class", "a-size-base-plus a-color-base a-text-normal"}
                 ):
                     product_desc = product.find(
-                        "span", {"class", "a-size-base-plus a-color-base a-text-normal"}
+                        "span", {
+                            "class", "a-size-base-plus a-color-base a-text-normal"}
                     ).text
                 ratting = None
                 if product.find(
@@ -405,13 +423,16 @@ class AmazonBot(webdriver.Chrome):
                     product_link = f"https://www.amazon.com{product_link}"
                 total_review = None
                 if product.find("span", {"class": "a-size-base"}):
-                    total_review = product.find("span", {"class": "a-size-base"}).text
+                    total_review = product.find(
+                        "span", {"class": "a-size-base"}).text
                 product_price = None
                 if product.find("span", {"class": "a-price-whole"}):
-                    whole = product.find("span", {"class": "a-price-whole"}).text
+                    whole = product.find(
+                        "span", {"class": "a-price-whole"}).text
                     product_price = whole
                 if product.find("span", {"class": "a-price-fraction"}):
-                    fraction = product.find("span", {"class": "a-price-fraction"}).text
+                    fraction = product.find(
+                        "span", {"class": "a-price-fraction"}).text
                     product_price = f"{product_price}{fraction}"
 
                 product_list.append(
